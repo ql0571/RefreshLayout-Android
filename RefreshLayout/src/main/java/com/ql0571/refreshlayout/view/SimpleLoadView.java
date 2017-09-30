@@ -41,6 +41,7 @@ public class SimpleLoadView extends LinearLayout implements IFooterWrapper {
     @Override
     public void pullUp() {
         mTvLoad.setText("上拉加载");
+
     }
 
     @Override
@@ -53,5 +54,11 @@ public class SimpleLoadView extends LinearLayout implements IFooterWrapper {
         mTvLoad.setText("正在加载");
         AnimationDrawable drawable = (AnimationDrawable) mIvLoad.getDrawable();
         drawable.start();
+    }
+
+    @Override
+    public void pullUpFinish() {
+        AnimationDrawable drawable = (AnimationDrawable) mIvLoad.getDrawable();
+        drawable.stop();
     }
 }

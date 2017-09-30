@@ -451,6 +451,9 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
                 break;
             case State.PULL_UP_FINISH:
                 pullUpReset();
+                if (mFooterView != null) {
+                    mFooterView.pullUpFinish();
+                }
                 break;
 
             case State.BOTTOM:

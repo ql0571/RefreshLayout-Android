@@ -21,4 +21,9 @@ public interface IFooterWrapper {
      * 上拉已释放
      */
     void pullUpRelease();
+
+    /**
+     * 下拉完成
+     */
+    void pullUpFinish();
 }

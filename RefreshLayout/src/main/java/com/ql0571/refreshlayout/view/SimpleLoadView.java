@@ -39,11 +39,6 @@ public class SimpleLoadView extends LinearLayout implements IFooterWrapper {
     }
 
     @Override
-    public View getFooterView() {
-        return this;
-    }
-
-    @Override
     public void pullUp() {
         mTvLoad.setText("上拉加载");
     }

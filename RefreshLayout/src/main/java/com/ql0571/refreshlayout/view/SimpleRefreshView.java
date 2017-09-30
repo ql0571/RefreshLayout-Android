@@ -43,11 +43,6 @@ public class SimpleRefreshView extends LinearLayout implements IHeaderWrapper {
     }
 
     @Override
-    public View getHeaderView() {
-        return this;
-    }
-
-    @Override
     public void pullDown() {
         lvHeaderTipsTv.setText("下拉刷新");
     }

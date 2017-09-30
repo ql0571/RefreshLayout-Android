@@ -1,7 +1,5 @@
 package com.ql0571.refreshlayout;
 
-import android.view.View;
-
 /**
  * desc:头部刷新接口
  * <p>
@@ -9,13 +7,6 @@ import android.view.View;
  * date: 2017/7/24
  */
 public interface IHeaderWrapper {
-
-    /**
-     * 获取刷新布局
-     * @return
-     */
-    View getHeaderView();
-
     /**
      * 下拉中
      */

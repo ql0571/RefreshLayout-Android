@@ -1,7 +1,5 @@
 package com.ql0571.refreshlayout;
 
-import android.view.View;
-
 /**
  * desc:加载更多刷新接口
  * <p>
@@ -9,14 +7,6 @@ import android.view.View;
  * date: 2017/7/24
  */
 public interface IFooterWrapper {
-
-    /**
-     * 获取加载更多布局
-     *
-     * @return
-     */
-    View getFooterView();
-
     /**
      * 上拉中
      */

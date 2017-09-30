@@ -33,11 +33,6 @@ public class SimpleBottomView extends LinearLayout implements IBottomWrapper {
     }
 
     @Override
-    public View getBottomView() {
-        return this;
-    }
-
-    @Override
     public void showBottom() {
 
     }

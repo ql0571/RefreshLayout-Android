@@ -3,6 +3,7 @@ package com.ql0571.myapplication;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,15 +23,15 @@ import java.util.List;
 public class RecycleviewActivity extends AppCompatActivity {
 
 
-    //        RecyclerView mRecyclerView;
-    RefreshLayout mSimpleRefreshLayout;
+    private RecyclerView mRecyclerView;
+    private RefreshLayout mSimpleRefreshLayout;
     private Button bt_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refresh2);
-//        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        setContentView(R.layout.activity_refresh);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mSimpleRefreshLayout = (RefreshLayout) findViewById(R.id.simple_refresh);
         bt_refresh = (Button) findViewById(R.id.bt_refresh);
         bt_refresh.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +59,7 @@ public class RecycleviewActivity extends AppCompatActivity {
                         mSimpleRefreshLayout.onRefreshComplete();
 
                     }
-                }, 3000);
+                }, 1500);
             }
 
             @Override
@@ -79,8 +80,8 @@ public class RecycleviewActivity extends AppCompatActivity {
         });
 
         initData();
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     List<String> mData = new ArrayList<>();

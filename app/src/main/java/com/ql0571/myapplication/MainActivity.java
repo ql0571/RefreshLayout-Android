@@ -17,4 +17,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this,NestedScrollViewActivity.class));
     }
 
+    public void onRecycleview(View v){
+        startActivity(new Intent(this,RecycleviewActivity.class));
+    }
+
 }

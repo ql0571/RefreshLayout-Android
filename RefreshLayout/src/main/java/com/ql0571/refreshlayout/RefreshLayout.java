@@ -13,6 +13,7 @@ import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -362,15 +363,19 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
             }
         } else {
             if ((Math.abs(getScrollY()) >= effectivePullDownRange) && getScrollY() < 0) {//有效的滑动距离
-                updateStatus(State.PULL_DOWN_RELEASE);
-                mScroller.startScroll(0, getScrollY(), 0, -(getScrollY() + effectivePullDownRange));
-                mScroller.extendDuration(ANIMATION_EXTEND_DURATION);
-                invalidate();
+                if (currentState != State.PULL_DOWN_RELEASE) {
+                    updateStatus(State.PULL_DOWN_RELEASE);
+                    mScroller.startScroll(0, getScrollY(), 0, -(getScrollY() + effectivePullDownRange));
+                    mScroller.extendDuration(ANIMATION_EXTEND_DURATION);
+                    invalidate();
+                }
             } else if ((Math.abs(getScrollY()) >= effectivePullUpRange) && getScrollY() > 0) {
-                updateStatus(State.PULL_UP_RELEASE);
-                mScroller.startScroll(0, getScrollY(), 0, -(getScrollY() - effectivePullUpRange));
-                mScroller.extendDuration(ANIMATION_EXTEND_DURATION);
-                invalidate();
+                if (currentState != State.PULL_UP_RELEASE) {
+                    updateStatus(State.PULL_UP_RELEASE);
+                    mScroller.startScroll(0, getScrollY(), 0, -(getScrollY() - effectivePullUpRange));
+                    mScroller.extendDuration(ANIMATION_EXTEND_DURATION);
+                    invalidate();
+                }
             } else {
                 updateStatus(State.PULL_NORMAL);
             }
@@ -696,12 +701,20 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 
     @Override
     public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
+
+        Log.e("log", "onNestedPreFling view=" + target + " velocityX=" + velocityX + ";velocityY=" + velocityY);
+
+
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 && super.onNestedPreFling(target, velocityX, velocityY);
     }
 
     @Override
     public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
+
+
+        Log.e("log", "onNestedFling view=" + target + " velocityX=" + velocityX + ";velocityY=" + velocityY + ";consumed=" + consumed);
+
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 && super.onNestedFling(target, velocityX, velocityY, consumed);
     }
